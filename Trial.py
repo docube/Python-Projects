@@ -9,4 +9,8 @@ another_list = ['four', 'five']
 new_list = my_list + another_list
 print(new_list)
 new_list[0] = 'string'
+new_list.append('six')
 print(new_list)
+new_list.pop()
+print(new_list)
+print(new_list.pop(0))
