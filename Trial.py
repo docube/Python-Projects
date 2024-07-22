@@ -8,3 +8,5 @@ print(mylist[1:])
 another_list = ['four', 'five']
 new_list = my_list + another_list
 print(new_list)
+new_list[0] = 'string'
+print(new_list)
