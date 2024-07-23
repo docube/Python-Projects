@@ -20,5 +20,6 @@ new_list = ['e', 'x', 'w', 'p', 'a', 's', 'n']
 
 new_list.sort()
 num_list.sort()
+new_list.reverse()
 print(new_list)
 print(num_list)
