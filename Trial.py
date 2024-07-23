@@ -47,3 +47,19 @@ print(letter)
 print(letter.upper())
 
 print(m['key1'][2].upper())
+
+p = {'k1':100, 'k2':200}
+print(p['k1'])
+p['k3'] = 300
+print(p)
+p['k2'] = 'New Value'
+print(p['k2'])
+print(p)
+
+print(p.keys())
+print(p.values())
+print(p.items())
+
+dan = (1,2,3)
+bee = [1,2,3]
+ife = {'3', '2'. '1'}
