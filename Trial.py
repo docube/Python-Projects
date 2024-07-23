@@ -27,3 +27,14 @@ num_list.reverse()
 print(num_list)
 print(new_list)
 print(num_list[-3])
+
+my_dict = {'key1':'value1', 'key2':'value2'}
+print(my_dict['key1'])
+print(my_dict)
+
+fruit_list = {'Apples': '$5.85', 'Banana':'$4.50', 'Mango':'$5.25'}
+print(fruit_list['Banana'])
+
+d = {'k1':'first', 'k2':[1,2,3,4,5], 'k3':{'inside_key':100}}
+print(d['k3']['inside_key'])
+print(d['k2'][3])
