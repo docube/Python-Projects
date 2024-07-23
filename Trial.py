@@ -15,11 +15,15 @@ new_list.pop()
 print(new_list)
 print(new_list.pop(0))
 
-num_list = [0, 1, 7, 3, 8, 2, 5, 4, 6]
+num_list = [0, 1, 7, 3, 8, 2, 5, 4, 6, [17,19,18]]
 new_list = ['e', 'x', 'w', 'p', 'a', 's', 'n']
 
 new_list.sort()
-num_list.sort()
-new_list.reverse()
+#num_list.sort()
 print(new_list)
 print(num_list)
+new_list.reverse()
+num_list.reverse()
+print(num_list)
+print(new_list)
+print(num_list[-3])
