@@ -38,3 +38,12 @@ print(fruit_list['Banana'])
 d = {'k1':'first', 'k2':[1,2,3,4,5], 'k3':{'inside_key':100}}
 print(d['k3']['inside_key'])
 print(d['k2'][3])
+
+m = {'key1':['a','b','c']}
+mi_list = m['key1']
+print(mi_list)
+letter = mi_list[1]
+print(letter)
+print(letter.upper())
+
+print(m['key1'][2].upper())
