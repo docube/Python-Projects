@@ -26,6 +26,7 @@ class User:
                 writer.writerow([user.username, user.password])
 
     def __init__(self, username, password):
+        # defines the constructor method
         self.username = username
         self.password = password
         self.wallet = Wallet(username)
@@ -77,13 +78,13 @@ class User:
 
         while True:
             print("\nPlease select an option:")
-            print("1. Send money")
+            print("1. Transfer")
             print("2. View balance")
             print("3. View transactions")
             print("4. Deposit money")
             print("5. Logout")
 
-            choice = input("Enter your choice (1/2/3/4/5): ")
+            choice = input("Enter your choice (1/2/3/4/5/6/7): ")
 
             if choice == '1':
                 self.wallet.send_money()
@@ -248,9 +249,11 @@ def main_menu():
         print("2. Login")
         print("3. Deposit")
         print("4. Transfer")
-        print("5. Exit")
+        print("5. View Balance")
+        print("6. View Transactions")
+        print("7. Exit")
 
-        choice = input("Enter your choice (1/2/3/4/5): ")
+        choice = input("Enter your choice (1/2/3/4/5/6/7): ")
 
         if choice == '1':
             User.signup()
@@ -261,6 +264,10 @@ def main_menu():
         elif choice == '4':
             print("Please Login into your wallet.")
         elif choice == '5':
+            print("Please Login into your wallet.")
+        elif choice == '6':
+            print("Please Login into your wallet.")
+        elif choice == '7':
             User.save_data()
             Wallet.save_data()
             Transaction.save_data()
