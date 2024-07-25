@@ -66,7 +66,8 @@ ife = {'3':23, '2':76, '1':140}
 dave = {'31', '30', 'er'}
 
 print(type(dan))
-# print(dan)
 print(type(ife))
 print(type(bee))
 print(type(dave))
+
+print(dan.count(2))
