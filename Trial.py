@@ -71,3 +71,14 @@ print(type(bee))
 print(type(dave))
 
 print(dan.count(2))
+myset = set()
+myset.add(1)
+print(myset)
+myset.add(2)
+myset.add(24)
+myset.add('Michael')
+print(myset)
+
+mynewlist = [1,1,1,2,2,2,3,3,4,4,4,4,4,5,5,5,5,5]
+print(set(mynewlist))
+
