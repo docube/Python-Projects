@@ -62,4 +62,11 @@ print(p.items())
 
 dan = (1,2,3)
 bee = [1,2,3]
-ife = {'3', '2', '1'}
+ife = {'3':23, '2':76, '1':140}
+dave = {'31', '30', 'er'}
+
+print(type(dan))
+# print(dan)
+print(type(ife))
+print(type(bee))
+print(type(dave))
