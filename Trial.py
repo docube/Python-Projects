@@ -85,4 +85,18 @@ print(set([1,2,4,5,3]))
 
 newfile = open('newfile.txt')
 print(newfile.read())
-# print(newfile.read())
+
+with open('newfile.txt', mode='r') as f:
+    print(f.read())
+    
+with open('newfile.txt', mode='w') as f:
+    f.write("I Love Jesus \nThe Lord is Gracious \nI see the Lord \nHe's high and lifted up \nAnd his trail fills the temple.")
+
+with open('newfile.txt', mode='r') as f:
+    print(f.read())
+
+with open('newfile.txt', mode='a') as f:
+    f.write("\nNow hail our King!")
+
+with open('newfile.txt', mode='r') as f:
+    print(f.read())
