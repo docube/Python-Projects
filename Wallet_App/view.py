@@ -1,7 +1,10 @@
-# view.py
+# view.py class file - View Class
+
+# Import functions, classes and Libraries defined within class and from other class files
 from model import User, Wallet, Transaction
 from repo import UserRepository, WalletRepository, TransactionRepository
 
+# Define the signup function:
 def signup():
     print("Sign Up")
     username = input("Enter a username: ")

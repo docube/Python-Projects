@@ -1,6 +1,9 @@
-# model.py
+# model.py - Model Class
+
+# Import functions, classes and Libraries defined within class and from other class files
 import re
 
+# Define User Class and its possible instances - User Entity
 class User:
     def __init__(self, username, password, wallet_id, first_name, middle_name, last_name):
         self.username = username
@@ -14,12 +17,14 @@ class User:
     def add_transaction(self, transaction):
         self.transactions.append(transaction)
 
+# Define Wallet Class and its possible instances - Wallet Entity
 class Wallet:
     def __init__(self, username, wallet_id, balance=400.0):
         self.username = username
         self.wallet_id = wallet_id
         self.balance = balance
 
+# Define Transactions Class and its possible instances - Transactions Entity
 class Transaction:
     id_counter = 1
 

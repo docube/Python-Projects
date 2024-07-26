@@ -1,4 +1,6 @@
-# repo.py
+# repo.py class file - Repository Class
+
+# Import functions, classes and Libraries defined within class and from other class files
 import csv
 import os
 import random
