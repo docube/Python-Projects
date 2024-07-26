@@ -160,12 +160,16 @@ def main_menu():
             login()
         elif choice == '3':
             print("Please Login/Signup first")
+            login()
         elif choice == '4':
             print("Please Login/Signup first")
+            login()
         elif choice == '5':
             print("Please Login/Signup first")
+            login()
         elif choice == '6':
             print("Please Login/Signup first")
+            login()
         elif choice == '7':
             UserRepository.save_data()
             WalletRepository.save_data()
