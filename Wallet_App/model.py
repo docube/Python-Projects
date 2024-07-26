@@ -38,8 +38,8 @@ class Transaction:
     @staticmethod
     def from_string(details, txn_id):
         parts = details.split()
-        amount_str = parts[1][1:]  # Skip the currency symbol
-        amount = float(amount_str.replace(',', ''))  # Remove any commas
+        amount_str = re.sub(r'[^\d.]', '', parts[1])  # Remove any non-numeric characters except the decimal point
+        amount = float(amount_str)
         if parts[0] == "Deposited":
             return Transaction(parts[0], parts[0], amount, deposit=True)
         return Transaction(parts[2], parts[-1], amount)
