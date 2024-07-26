@@ -158,18 +158,47 @@ def main_menu():
             signup()
         elif choice == '2':
             login()
+            
         elif choice == '3':
             print("Please Login/Signup first")
-            login()
+
+            deci = input("1 to signup \n2 to login: ")
+
+            if deci == '1':
+                signup()
+            elif deci == '2':
+                login()
+
         elif choice == '4':
             print("Please Login/Signup first")
-            login()
+
+            deci = input("1 to signup \n2 to login: ")
+
+            if deci == '1':
+                signup()
+            elif deci == '2':
+                login()
+
         elif choice == '5':
             print("Please Login/Signup first")
-            login()
+
+            deci = input("1 to signup \n2 to login: ")
+
+            if deci == '1':
+                signup()
+            elif deci == '2':
+                login()
+
         elif choice == '6':
             print("Please Login/Signup first")
-            login()
+
+            deci = input("1 to signup \n2 to login: ")
+
+            if deci == '1':
+                signup()
+            elif deci == '2':
+                login()
+
         elif choice == '7':
             UserRepository.save_data()
             WalletRepository.save_data()
