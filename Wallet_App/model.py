@@ -1,4 +1,5 @@
 # model.py
+import re
 
 class User:
     def __init__(self, username, password, wallet_id, first_name, middle_name, last_name):
@@ -39,7 +40,7 @@ class Transaction:
     def from_string(details, txn_id):
         parts = details.split()
         amount_str = re.sub(r'[^\d.]', '', parts[1])  # Remove any non-numeric characters except the decimal point
-        amount = float(amount_str)
+        amount = float(amount_str.replace(',', ''))  # Ensure commas are removed
         if parts[0] == "Deposited":
             return Transaction(parts[0], parts[0], amount, deposit=True)
         return Transaction(parts[2], parts[-1], amount)
