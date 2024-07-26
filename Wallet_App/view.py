@@ -44,22 +44,22 @@ def dashboard(user):
 
     while True:
         print("\nPlease select an option:")
-        print("1. Transfer")
-        print("2. View balance")
-        print("3. View transactions")
-        print("4. Deposit money")
+        print("1. Deposit money")
+        print("2. Transfer")
+        print("3. View balance")
+        print("4. View transactions")
         print("5. Logout")
 
         choice = input("Enter your choice (1/2/3/4/5): ")
 
         if choice == '1':
-            send_money(user)
-        elif choice == '2':
-            view_balance(user)
-        elif choice == '3':
-            view_transactions(user)
-        elif choice == '4':
             deposit_money(user)
+        elif choice == '2':
+            send_money(user)
+        elif choice == '3':
+            view_balance(user)
+        elif choice == '4':
+            view_transactions(user)
         elif choice == '5':
             print("Logging out...")
             break
