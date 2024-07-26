@@ -56,7 +56,15 @@ class Wallet:
             with open(wallets_file, mode='r', newline='') as file:
                 reader = csv.reader(file)
                 for row in reader:
-                    username, balance, wallet_id = row
+                    if len(row) == 2:
+                        # Old format: username, balance
+                        username, balance = row
+                        wallet_id = Wallet.generate_wallet_id()
+                    elif len(row) == 3:
+                        # New format: username, balance, wallet_id
+                        username, balance, wallet_id = row
+                    else:
+                        raise ValueError(f"Unexpected row format: {row}")
                     Wallet.wallets[wallet_id] = Wallet(username, float(balance), wallet_id)
 
     @staticmethod
