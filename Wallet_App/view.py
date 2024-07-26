@@ -1,3 +1,4 @@
+# view.py
 from model import User, Wallet, Transaction
 from repo import UserRepo, WalletRepo
 
@@ -10,15 +11,27 @@ def main_menu():
         print("\nPlease select an option:")
         print("1. Sign up")
         print("2. Login")
-        print("3. Exit")
+        print("3. Deposit")
+        print("4. Transfer")
+        print("5. View Balance")
+        print("6. View Transactions")
+        print("7. Exit")
 
         choice = input("Enter your choice (1/2/3): ")
 
         if choice == '1':
-            signup()
+            User.signup()
         elif choice == '2':
-            login()
+            User.login()
         elif choice == '3':
+            print("Please Login into your wallet.")
+        elif choice == '4':
+            print("Please Login into your wallet.")
+        elif choice == '5':
+            print("Please Login into your wallet.")
+        elif choice == '6':
+            print("Please Login into your wallet.")
+        elif choice == '7':
             User.save_data()
             Wallet.save_data()
             Transaction.save_data()
