@@ -16,7 +16,16 @@ class User:
             with open(users_file, mode='r', newline='') as file:
                 reader = csv.reader(file)
                 for row in reader:
-                    username, password, wallet_id, first_name, middle_name, last_name = row
+                    if len(row) == 2:
+                        # Old format: username, password
+                        username, password = row
+                        wallet_id = Wallet.generate_wallet_id()
+                        first_name, middle_name, last_name = None, None, None
+                    elif len(row) == 6:
+                        # New format: username, password, wallet_id, first_name, middle_name, last_name
+                        username, password, wallet_id, first_name, middle_name, last_name = row
+                    else:
+                        raise ValueError(f"Unexpected row format: {row}")
                     User.users[username] = User(username, password, wallet_id, first_name, middle_name, last_name)
 
     @staticmethod
