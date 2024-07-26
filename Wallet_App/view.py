@@ -1,11 +1,12 @@
 # view.py
+import random
+from repo import UserRepository, WalletRepository, TransactionRepository
 from model import User, Wallet, Transaction
-from repo import UserRepo, WalletRepo
 
 def main_menu():
-    User.load_data()
-    Wallet.load_data()
-    Transaction.load_data()
+    UserRepository.load_data()
+    WalletRepository.load_data()
+    TransactionRepository.load_data()
 
     while True:
         print("\nPlease select an option:")
@@ -17,12 +18,12 @@ def main_menu():
         print("6. View Transactions")
         print("7. Exit")
 
-        choice = input("Enter your choice (1/2/3): ")
+        choice = input("Enter your choice (1/2/3/4/5/6/7): ")
 
         if choice == '1':
-            User.signup()
+            signup()
         elif choice == '2':
-            User.login()
+            login()
         elif choice == '3':
             print("Please Login into your wallet.")
         elif choice == '4':
@@ -32,9 +33,9 @@ def main_menu():
         elif choice == '6':
             print("Please Login into your wallet.")
         elif choice == '7':
-            User.save_data()
-            Wallet.save_data()
-            Transaction.save_data()
+            UserRepository.save_data()
+            WalletRepository.save_data()
+            TransactionRepository.save_data()
             exit_program()
         else:
             print("Invalid choice. Please select a valid option.")
@@ -42,17 +43,24 @@ def main_menu():
 def signup():
     print("Sign Up")
     username = input("Enter a username: ")
+    if username in UserRepository.users:
+        print("Username already exists. Please try a different one.")
+        return
+
+    password = input("Enter a password: ")
     first_name = input("Enter your first name: ")
     middle_name = input("Enter your middle name: ")
     last_name = input("Enter your last name: ")
-    password = input("Enter a password: ")
+    wallet_id = generate_wallet_id()
 
-    user = UserRepo.create_user(username, password, first_name, middle_name, last_name)
-    if user:
-        print("Sign up successful! Logging you in...")
-        login(username, password)
-    else:
-        print("Username already exists. Please try a different one.")
+    user = User(username, password, wallet_id, first_name, middle_name, last_name)
+    UserRepository.users[username] = user
+    UserRepository.save_data()
+    WalletRepository.save_data()
+    print("Sign up successful! Logging you in...")
+
+    # Call login function immediately after sign up
+    login(username, password)
 
 def login(username=None, password=None):
     print("Log In")
@@ -63,12 +71,16 @@ def login(username=None, password=None):
     if password is None:
         password = input("Enter your password: ")
 
-    user = UserRepo.get_user(username)
-    if user and user.password == password:
+    if username not in UserRepository.users:
+        print("Username not found. Please sign up first.")
+        return
+
+    user = UserRepository.users[username]
+    if user.password == password:
         print("Login successful!")
         dashboard(user)  # Call the wallet function after successful login
     else:
-        print("Incorrect username or password. Please try again.")
+        print("Incorrect password. Please try again.")
 
 def dashboard(user):
     print(f"Welcome to your wallet, {user.username}!")
@@ -84,57 +96,21 @@ def dashboard(user):
         choice = input("Enter your choice (1/2/3/4/5): ")
 
         if choice == '1':
-            send_money(user)
+            user.wallet.send_money()
         elif choice == '2':
-            view_balance(user)
+            user.wallet.view_balance()
         elif choice == '3':
-            view_transactions(user)
+            user.wallet.view_transactions()
         elif choice == '4':
-            deposit_money(user)
+            user.wallet.deposit_money()
         elif choice == '5':
             print("Logging out...")
             break
         else:
             print("Invalid choice. Please select a valid option.")
 
-def send_money(user):
-    recipient_username = input("Enter the recipient's username: ")
-    amount = float(input("Enter the amount to send: ₦"))
-    if WalletRepo.send_money(user.username, recipient_username, amount):
-        print(f"Sent ₦{amount} to {recipient_username} successfully.")
-    else:
-        print("Transfer failed. Check recipient username and your balance.")
-
-def view_balance(user):
-    print(f"Your current balance is: ₦{user.wallet.balance}")
-
-def view_transactions(user):
-    if not user.transactions:
-        print("No transactions found.")
-        return
-
-    print("ID  Your transactions:")
-    for txn in user.transactions:
-        print(f"{txn.id}. {txn.details()}")
-
-    try:
-        txn_id = int(input("Enter the transaction ID to view details or 0 to return: "))
-        if txn_id == 0:
-            return
-        txn = next((t for t in user.transactions if t.id == txn_id), None)
-        if txn:
-            print(f"Transaction {txn_id}: {txn.details()}")
-        else:
-            print("Transaction ID not found.")
-    except ValueError:
-        print("Invalid input.")
-
-def deposit_money(user):
-    amount = float(input("Enter the amount to deposit: ₦"))
-    if WalletRepo.deposit_money(user.username, amount):
-        print(f"Deposited ₦{amount} successfully.")
-    else:
-        print("Deposit failed.")
+def generate_wallet_id():
+    return str(random.randint(1000000000, 9999999999))
 
 def exit_program():
     print("Exiting the program.")
@@ -142,4 +118,3 @@ def exit_program():
 
 if __name__ == "__main__":
     main_menu()
-    
