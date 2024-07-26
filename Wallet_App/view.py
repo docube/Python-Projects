@@ -143,7 +143,11 @@ def main_menu():
         print("\nPlease select an option:")
         print("1. Sign up")
         print("2. Login")
-        print("3. Exit")
+        print("3. Deposit")
+        print("4. Send")
+        print("5. View Balance")
+        print("6. View Transactions")
+        print("7. Exit")
 
         choice = input("Enter your choice (1/2/3): ")
 
@@ -152,6 +156,14 @@ def main_menu():
         elif choice == '2':
             login()
         elif choice == '3':
+            print("Please Login/Signup first")
+        elif choice == '4':
+            print("Please Login/Signup first")
+        elif choice == '5':
+            print("Please Login/Signup first")
+        elif choice == '6':
+            print("Please Login/Signup first")
+        elif choice == '7':
             UserRepository.save_data()
             WalletRepository.save_data()
             TransactionRepository.save_data()
