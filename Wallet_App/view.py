@@ -1,3 +1,4 @@
+from model import User, Wallet, Transaction
 from repo import UserRepo, WalletRepo
 
 def main_menu():
